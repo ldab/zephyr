@@ -1,0 +1,25 @@
+# Copyright (c) 2025 Leonardo Bispo
+# SPDX-License-Identifier: Apache-2.0
+
+title: Sinowealth SH8601 Display Controller
+
+description: |
+  Sinowealth SH8601 466x466 round LCD display controller.
+  Supports standard SPI interface mode.
+
+compatible: "sinowealth,sh8601"
+
+include: [spi-device.yaml, display-controller.yaml]
+
+properties:
+  reset-gpios:
+    type: phandle-array
+    description: GPIO for hardware reset signal (active low)
+
+  mirror-x:
+    type: boolean
+    description: Mirror display horizontally
+
+  mirror-y:
+    type: boolean
+    description: Mirror display vertically

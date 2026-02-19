@@ -1,0 +1,36 @@
+/ {
+	chosen {
+		zephyr,display = &sh8601_lcd;
+	};
+};
+
+&pinctrl {
+	spim2_sh8601: spim2_sh8601 {
+		group1 {
+			pinmux = <SPIM2_MISO_GPIO11>,
+				 <SPIM2_MOSI_GPIO12>,
+				 <SPIM2_SCLK_GPIO10>;
+		};
+		group2 {
+			pinmux = <SPIM2_CSEL_GPIO9>;
+		};
+	};
+};
+
+&spi2 {
+	status = "okay";
+	pinctrl-0 = <&spim2_sh8601>;
+	pinctrl-names = "default";
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	sh8601_lcd: sh8601@0 {
+		compatible = "sinowealth,sh8601";
+		reg = <0>;
+		spi-max-frequency = <40000000>;
+		width = <466>;
+		height = <466>;
+		reset-gpios = <&gpio0 21 GPIO_ACTIVE_LOW>;
+	};
+};

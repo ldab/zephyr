@@ -1,0 +1,11 @@
+# Copyright (c) 2025 Leonardo Bispo
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig SH8601
+	bool "SH8601 display driver"
+	default y
+	depends on DT_HAS_SINOWEALTH_SH8601_ENABLED
+	select SPI
+	help
+	  Enable driver for Sinowealth SH8601 466x466 round LCD display controller.
+	  This driver supports SPI interface mode.
